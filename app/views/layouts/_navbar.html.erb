@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <%= link_to "MICROVERSE BLOGING PROJECT", root_path, class: "navbar-brand font-weight-bold", id: "logo"%>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Articles
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "Create new article", new_post_path, class: "dropdown-item" %>
+          <div class="dropdown-divider"></div>
+            <%= link_to "Articles Listing", root_path, class: "dropdown-item" %>
+        </div>
+      </li>
+
+
+        <% if current_user %> 
+          <li class="nav-item">
+            <%= link_to 'Logout', destroy_user_session_path, class: "nav-link text-white", method: :delete %>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link text-white" ><%= current_user.name %></div>
+          </li>
+        <% end %>
+        <% if !user_signed_in? %> 
+          <li class="nav-item">
+            <%= link_to 'Log in', new_user_session_path, class: "nav-link text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign up', new_user_registration_path, class: "nav-link text-white" %>
+          </li>
+        <% end %>
+
+    </ul>
+  </div>
+</nav>
