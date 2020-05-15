@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
 
   def index
-    @posts = Post.all.order("updated_at DESC")
+    @posts = Post.all.order('updated_at DESC')
   end
 
   def new
@@ -25,4 +25,3 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :description)
   end
 end
-
