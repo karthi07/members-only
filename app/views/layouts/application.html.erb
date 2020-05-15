@@ -13,7 +13,9 @@
     <%= render 'layouts/navbar' %>
     <div id="page-content">
       <%= render 'layouts/flash' %>
+      <div class="container card-body">
       <%= yield %>
+      </div>
     </div>
     <%= render 'layouts/footer' %>
   </body>
