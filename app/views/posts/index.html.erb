@@ -1,0 +1,28 @@
+<h2 class="text-center mt-4">
+  <%= link_to 'Create new post', new_post_path %>
+</h2>
+<% @posts.each do |post| %>
+  <div class="container ">
+    <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="card text-center mb-5 shadow mb-5 bg-white rounded">
+        <% if user_signed_in?  %>
+        <div class="card-header">
+          By <%= post.user.name %> 
+        </div>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title card-title"><%= post.title %></h5>
+          <p class="card-text"><%= post.description %></p>
+     
+        </div>
+        <div class="card-footer text-muted">
+          <small>Created <%= time_ago_in_words(post.created_at) %> ago |
+            Upadted <%= time_ago_in_words(post.updated_at) %> age</small>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+<% end %>
+
